@@ -1,3 +1,43 @@
 <!doctype html>
+<head>
 <title>Super Sprinter 3000</title>
 <h1>LIST</h1>
+</head>
+<body>
+<table>
+<tr>
+<td>
+ID
+</td>
+<td>
+Story Title
+</td>
+<td>
+User Story
+</td>
+<td>
+Accaptance criteria
+</td>
+<td>
+Business value
+</td>
+<td>
+Estimation
+</td>
+<td>
+Status
+</td>
+</tr>
+</table>
+<table border="1">
+        {% for line in get_table_from_file %}
+    <tr>
+        {% for item in line%}
+    <td>
+        {{ item }}
+    </td>
+        {% endfor %}
+    </tr>
+        {% endfor %}
+    </table>
+</body>

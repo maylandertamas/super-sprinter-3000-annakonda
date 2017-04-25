@@ -9,26 +9,26 @@
 {% endif %}
 </head>
 <body>
-<p>Story is {{ storyid }}</p>
-<form action="/stories.csv" method="POST">
+<p>Story is {{ story_id }}</p>
+<form action="read-input" method="post">
 
     <p>Story Title:</p>
-    <p><input id="story_title" type="text" name="Story Title"></p>
+    <p><input type="text" name="story-title"></p>
 
     <p>User Story:</p>
-    <p><textarea id="user_story"  name="User Story" rows="5" cols="20"></textarea></p>
+    <p><textarea name="user-story" rows="5" cols="20"></textarea></p>
     
     <p>Acceptance criteria:</p>
-    <p><textarea id="acceptance_crit"  name="Acceptance criteria" rows="5" cols="20"></textarea></p>
+    <p><textarea name="accept-crit" rows="5" cols="20"></textarea></p>
     
     <p>Business value:</p>
-    <input id="business_value" type="number" name="Business value" value="100" min="100" max="1500" step="100">
+    <input type="number" name="bussines-value" value="100" min="100" max="1500" step="100">
 
     <p>Estimation (h):</p>
-    <input id="estimated_time" type="number" name="Estimation" value="0.5" min="0.5" max="40" step="0.5">
+    <input type="number" name="estimation" value="0.5" min="0.5" max="40" step="0.5">
 
     <p>Status:</p>
-    <select id="status_input" name="Status list">
+    <select name="status">
         <option value="Planning">Planning</option>
         <option value="TODO">TODO</option>
         <option value="In Progress">In Progress</option>
@@ -36,7 +36,7 @@
         <option value="Done">Done</option>
     </select>
 
-    <p><input id="create_form" type="submit" name="Create" value="Create"></p>
+    <p><input type="submit" name="create" value="Create"></p>
 
 </form>
 </body>
