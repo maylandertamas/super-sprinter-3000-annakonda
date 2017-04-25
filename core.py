@@ -7,12 +7,6 @@ def home_list(file_name="templates/list.html", methods=['GET']):
     # Return this to the user who visited this page. The browser will render it.
     return render_template("list.html")
 
-"""
-@app.route('/story', methods=['GET', 'POST'])
-def story_form():
-    return "<h1></h1>\n" + "<title></title>\n" + render_template("form.html")
-"""
-
 
 @app.route('/story/<int:story_id>', methods=['GET', 'POST'])
 @app.route('/story', methods=['GET', 'POST'])
