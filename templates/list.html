@@ -31,7 +31,7 @@
       <td  align="middle">{{ item[5] }}</td>
       <td  align="middle">{{ item[6] }}</td>
       <td  align="middle">
-          <form action="edit-story" method="POST">
+          <form action="story/{{ item[0] }}" method="POST">
           <input name="edit" type="image" src="/static/pencil.png" alt="Submit" width="30" value="{{ item[0] }}">
           </form></td>
       <td  align="middle">

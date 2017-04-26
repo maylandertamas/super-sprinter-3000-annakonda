@@ -9,11 +9,11 @@ def home_list(data_list=[], methods=['GET', 'POST']):
     data_table = get_table_from_file()
     return render_template("list.html", data_list=data_table)
 
-
+"""
 @app.route('/story/<story_id>', methods=['GET', 'POST'])
 def story_edit(story_id=None):
     return render_template("form.html",  story_id=story_id)
-
+"""
 
 @app.route('/story', methods=['GET', 'POST'])
 def story_create(story_id=None):
@@ -54,6 +54,7 @@ def add_data():
     write_table_to_file(table)
     return home_list()
 
+
 @app.route('/delete-story', methods=['POST'])
 def delete_data():
     table = get_table_from_file()
@@ -66,14 +67,15 @@ def delete_data():
     return home_list()
 
 
-@app.route('/edit-story', methods=['POST'])
-def edit_story():
+@app.route('/story/<story_id>', methods=['GET', 'POST'])
+def edit_story(story_id=None, data_list=[]):
     table = get_table_from_file()
     ID = request.form['edit']
     ID_string = str(ID)
     update_list = [element for element in table if element[0] == ID_string]
     flatten_list = [item for sublist in update_list for item in sublist]
-    return story_edit(ID)
+    story_id = ID_string
+    return render_template("form.html", story_id=story_id, data_list=flatten_list)
 
 
 if __name__ == '__main__':
