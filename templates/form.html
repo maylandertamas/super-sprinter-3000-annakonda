@@ -46,8 +46,8 @@
 <body>
     <!-- Ha van story id akkor a lista elemeint kell beállítani value-nak az inputoknál!!-->
 <p>Story is {{ story_id }}</p>
-<form action="read-input" method="post">
-    <!--{% for data in data_list %} -->
+<form action="/story/<story_id>" method="post">
+    <!--{% for data in data_list %}  ebből olvassa be a datát -> és value-hoz adja-->
     <p>Story Title:</p>
     <p><input type="text" name="story-title"></p>
 

@@ -75,6 +75,17 @@ def edit_story(story_id=None, data_list=[]):
     update_list = [element for element in table if element[0] == ID_string]
     flatten_list = [item for sublist in update_list for item in sublist]
     story_id = ID_string
+    changed_story = []
+    """
+    data_list.append(request.form['story-title'])
+    data_list.append(request.form['user-story'])
+    data_list.append(request.form['accept-crit'])
+    data_list.append(request.form['bussines-value'])
+    data_list.append(request.form['estimation'])
+    data_list.append(request.form['status'])
+    """
+    #majd megkeresi a módosított lista ID-t a table-ben
+    #ha megvan akkor az egész sort KICSERÉLI
     return render_template("form.html", story_id=story_id, data_list=flatten_list)
 
 
