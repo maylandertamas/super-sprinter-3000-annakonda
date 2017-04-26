@@ -1,11 +1,16 @@
 <!doctype html>
 <head>
 <title>Super Sprinter 3000</title>
-<h1>LIST</h1>
+<h1>User Story Manager</h1>
 </head>
 <body>
-<table border=1>
-<tr>
+<p>
+<form action="story" method="get">
+<button type="submit">Add New Story</button>
+</form>
+</p>
+<table border=1 width="1000">
+<tr align="middle">
     <th>ID</th>
     <th>Story Title</th>
     <th>User Story</th>
@@ -13,24 +18,27 @@
     <th>Business value</th>
     <th>Estimation (h)</th>
     <th>Status</th>
+    <th>Edit</th>
+    <th>Delete</th>
 </tr>
 <tr>
 {% for item in data_list %}
-      <td>{{ item[0]|tojson|safe }}</td>
-      <td>{{ item[1] }}</td>
-      <td>{{ item[2] }}</td>
-      <td>{{ item[3] }}</td>
-      <td>{{ item[4] }}</td>
-      <td>{{ item[5] }}</td>
-      <td>{{ item[6] }}</td>
-      <td>Edit</td>
-      <td>Delete</td>
+      <td  align="middle">{{ item[0] }}</td>
+      <td  align="middle">{{ item[1] }}</td>
+      <td  align="middle">{{ item[2] }}</td>
+      <td  align="middle">{{ item[3] }}</td>
+      <td  align="middle">{{ item[4] }}</td>
+      <td  align="middle">{{ item[5] }}</td>
+      <td  align="middle">{{ item[6] }}</td>
+      <td  align="middle">
+          <form action="edit-story" method="POST">
+          <input name="edit" type="image" src="/static/pencil.png" alt="Submit" width="30" value="{{ item[0] }}">
+          </form></td>
+      <td  align="middle">
+          <form action="delete-story" method="POST">
+          <input name="delete" type="image" src="/static/trash_can.png" alt="Submit" width="30" value="{{ item[0] }}">
+          </form></td>
     </tr>
 {% endfor %}
 </table>
-<p>
-<form action="story" method="get">
-<button type="submit">Add New Story</button>
-</form>
-</p>
 </body>

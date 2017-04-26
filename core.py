@@ -10,10 +10,14 @@ def home_list(data_list=[], methods=['GET', 'POST']):
     return render_template("list.html", data_list=data_table)
 
 
-@app.route('/story/<int:story_id>', methods=['GET', 'POST'])
-@app.route('/story', methods=['GET', 'POST'])
-def story(story_id=None):
+@app.route('/story/<story_id>', methods=['GET', 'POST'])
+def story_edit(story_id=None):
     return render_template("form.html",  story_id=story_id)
+
+
+@app.route('/story', methods=['GET', 'POST'])
+def story_create(story_id=None):
+    return render_template("form.html", story_id=story_id)
 
 
 def get_table_from_file(file_name="stories.csv"):
@@ -48,7 +52,29 @@ def add_data():
     data_list.append(request.form['status'])
     table.append(data_list)
     write_table_to_file(table)
-    return """<h2>New story added</h2>\n <button onclick="location.href='http://127.0.0.1:5000/'" type="button">List page</button> """
+    return home_list()
+
+@app.route('/delete-story', methods=['POST'])
+def delete_data():
+    table = get_table_from_file()
+    ID = request.form['delete']
+    ID_string = str(ID)
+    for element in table:
+        if element[0] == ID_string:
+            table.remove(element)
+    write_table_to_file(table)
+    return home_list()
+
+
+@app.route('/edit-story', methods=['POST'])
+def edit_story():
+    table = get_table_from_file()
+    ID = request.form['edit']
+    ID_string = str(ID)
+    update_list = [element for element in table if element[0] == ID_string]
+    flatten_list = [item for sublist in update_list for item in sublist]
+    return story_edit(ID)
+
 
 if __name__ == '__main__':
     app.run()
