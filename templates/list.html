@@ -6,7 +6,7 @@
 <body>
 <p>
 <form action="story" method="get">
-<button type="submit">Add New Story</button>
+<button id="Add_new_story_button" type="submit">Add New Story</button>
 </form>
 </p>
 <table border=1 width="1000">
@@ -32,11 +32,11 @@
       <td  align="middle">{{ item[6] }}</td>
       <td  align="middle">
           <form action="story/{{ item[0] }}" method="POST">
-          <input name="edit_option" type="image" src="/static/pencil.png" alt="Submit" width="30" value="{{ item[0] }}">
+          <input id="edit_option_button" name="edit_option" type="image" src="/static/pencil.png" alt="Submit" width="30" value="{{ item[0] }}">
           </form></td>
       <td  align="middle">
           <form action="delete-story" method="POST">
-          <input name="delete" type="image" src="/static/trash_can.png" alt="Submit" width="30" value="{{ item[0] }}">
+          <input id="delete_option_button" name="delete" type="image" src="/static/trash_can.png" alt="Submit" width="30" value="{{ item[0] }}">
           </form></td>
     </tr>
 {% endfor %}
