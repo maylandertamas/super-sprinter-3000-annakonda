@@ -6,7 +6,7 @@ app = Flask(__name__)
 
 @app.route('/')
 @app.route('/list')
-def home_list(data_list=[], methods=['GET', 'POST']):
+def home_list(data_list=[]):
     data_table = common.get_table_from_file()
     return render_template("list.html", data_list=data_table)
 
