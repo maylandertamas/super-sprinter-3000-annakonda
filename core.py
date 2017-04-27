@@ -39,14 +39,13 @@ def add_data():
     data_list.append(request.form['bussines-value'])
     data_list.append(request.form['estimation'])
     data_list.append(request.form['status'])
-    print(data_list)
     table.append(data_list)
     common.write_table_to_file(table)
     return redirect(url_for('home_list'))
 
 
 @app.route('/delete-story', methods=['POST'])
-def delete_data(data_list=[]):
+def delete_data():
     table = common.get_table_from_file()
     ID = request.form['delete']
     ID_string = str(ID)
@@ -58,7 +57,7 @@ def delete_data(data_list=[]):
 
 
 @app.route("/edit-story", methods=['GET', 'POST'])
-def edit_story(data_list=[]):
+def edit_story():
     table = common.get_table_from_file()
     ID = request.form["edit"]
     ID_string = str(ID)
