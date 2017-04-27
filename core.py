@@ -33,12 +33,10 @@ def add_data():
     table = common.get_table_from_file()
     data_list = []
     data_list.insert(0, common.ID_generator(table))
-    data_list.append(request.form['story-title'])
-    data_list.append(request.form['user-story'])
-    data_list.append(request.form['accept-crit'])
-    data_list.append(request.form['bussines-value'])
-    data_list.append(request.form['estimation'])
-    data_list.append(request.form['status'])
+    request_names = ['story-title', 'user-story', 'accept-crit',
+                     'bussines-value', 'estimation', 'status']
+    for name in request_names:
+        data_list.append(request.form[name])
     table.append(data_list)
     common.write_table_to_file(table)
     return redirect(url_for('home_list'))
@@ -63,12 +61,10 @@ def edit_story():
     ID_string = str(ID)
     changed_story = []
     changed_story.append(ID_string)
-    changed_story.append(request.form['changed-story-title'])
-    changed_story.append(request.form['changed-user-story'])
-    changed_story.append(request.form['changed-accept-crit'])
-    changed_story.append(request.form['changed-bussines-value'])
-    changed_story.append(request.form['changed-estimation'])
-    changed_story.append(request.form['changed-status'])
+    request_names = ['changed-story-title', 'changed-user-story', 'changed-accept-crit',
+                     'changed-bussines-value', 'changed-estimation', 'changed-status']
+    for names in request_names:
+        changed_story.append(request.form[names])
     for element in table:
         if element[0] == ID_string:
             table.remove(element)
