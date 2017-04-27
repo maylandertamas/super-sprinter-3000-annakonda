@@ -23,7 +23,7 @@ def story_edit(story_id=None, form_data=[]):
     return render_template("form.html",  story_id=story_id, form_data=datas_to_fill)
 
 
-@app.route('/story', methods=['GET', 'POST'])
+@app.route('/story')
 def story_create(story_id=None):
     return render_template("form.html", story_id=story_id)
 
@@ -54,7 +54,7 @@ def delete_data():
     return redirect(url_for('home_list'))
 
 
-@app.route("/edit-story", methods=['GET', 'POST'])
+@app.route("/edit-story", methods=['POST'])
 def edit_story():
     table = common.get_table_from_file()
     ID = request.form["edit"]
