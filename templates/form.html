@@ -8,34 +8,34 @@
 </head>
 <body>
 <form action="/list" method="get">
-<button type="submit">Back to Story Manager</button>
+<button id="back-to-main-create" type="submit">Back to Story Manager</button>
 </form>
 <form action="read-added-data" method="post">
 
     <p>Story Title:</p>
-    <p><input type="text" name="story-title" required></p>
+    <p><input id="story_title" type="text" name="story-title" required></p>
 
     <p>User Story:</p>
-    <p><textarea name="user-story" rows="5" cols="20" required></textarea></p>
+    <p><textarea id="user_story" name="user-story" rows="5" cols="20" required></textarea></p>
     
     <p>Acceptance criteria:</p>
-    <p><textarea name="accept-crit" rows="5" cols="20" required></textarea></p>
+    <p><textarea id="accept_crit" name="accept-crit" rows="5" cols="20" required></textarea></p>
     
     <p>Business value:</p>
-    <input type="number" name="bussines-value" value="100" min="100" max="1500" step="100">
+    <input id="bussines_value" type="number" name="bussines-value" value="100" min="100" max="1500" step="100">
 
     <p>Estimation (h):</p>
-    <input type="number" name="estimation" value="0.5" min="0.5" max="40" step="0.5">
+    <input id="estim_time" type="number" name="estimation" value="0.5" min="0.5" max="40" step="0.5">
 
     <p>Status:</p>
-    <select name="status">
+    <select id="stat" name="status">
         <option value="Planning">Planning</option>
         <option value="TODO">TODO</option>
         <option value="In Progress">In Progress</option>
         <option value="Review">Review</option>
         <option value="Done">Done</option>
     </select>
-<p><input type="submit" name="create" value="Create"></p>
+<p><input id="create_button" type="submit" name="create" value="Create"></p>
 </form>
 </body>
 
@@ -48,33 +48,33 @@
 </head>
 <body>
 <form action="/list" method="get">
-<button type="submit">Back to Story Manager</button>
+<button id="back-to-main-edit" type="submit">Back to Story Manager</button>
 </form>
 <form action="/edit-story" method="post">
    {% for data in form_data %}
     <p>Story Title:</p>
-    <p><input type="text" name="changed-story-title" value="{{ data[1] }}" required></p>
+    <p><input id="changed_story_title" type="text" name="changed-story-title" value="{{ data[1] }}" required></p>
 
     <p>User Story:</p>
-    <p><textarea name="changed-user-story" rows="5" cols="20" required>{{ data[2] }}</textarea></p>
+    <p><textarea id="changed_user_story" name="changed-user-story" rows="5" cols="20" required>{{ data[2] }}</textarea></p>
 
     <p>Acceptance criteria:</p>
-    <p><textarea name="changed-accept-crit" rows="5" cols="20" required>{{ data[3] }}</textarea></p>
+    <p><textarea id="changed_accept_crit" name="changed-accept-crit" rows="5" cols="20" required>{{ data[3] }}</textarea></p>
     
     <p>Business value:</p>
-    <input type="number" name="changed-bussines-value" min="100" max="1500" step="100" value="{{ data[4] }}">
+    <input id="changed_bussines_value" type="number" name="changed-bussines-value" min="100" max="1500" step="100" value="{{ data[4] }}">
 
     <p>Estimation (h):</p>
-    <input type="number" name="changed-estimation" min="0.5" max="40" step="0.5" value="{{ data[5] }}">
+    <input id="changed_estimation" type="number" name="changed-estimation" min="0.5" max="40" step="0.5" value="{{ data[5] }}">
     <p>Status:</p>
-    <select name="changed-status">
+    <select id="changed_status" name="changed-status">
         <option value="Planning">Planning</option>
         <option value="TODO">TODO</option>
         <option value="In Progress">In Progress</option>
         <option value="Review">Review</option>
         <option value="Done">Done</option>
     </select>
-    <p><button name="edit" type="submit" value="{{ data[0] }}">Update</button></p>
+    <p><button id="update_button" name="edit" type="submit" value="{{ data[0] }}">Update</button></p>
 </form>
 {% endfor %}
 </body>
