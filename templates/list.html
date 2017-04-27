@@ -5,9 +5,9 @@
 </head>
 <body>
 <p>
-<form action="story" method="get">
-<button id="Add_new_story_button" type="submit">Add New Story</button>
-</form>
+<a href="{{ url_for('story_create') }}" title="Add New Story">
+<button id="Add_new_story_button" type="button">Add New Story</button>
+</a>
 </p>
 <table border=1 width="1000">
 <tr align="middle">

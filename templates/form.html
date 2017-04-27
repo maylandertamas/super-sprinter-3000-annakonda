@@ -7,9 +7,9 @@
     <title>Super Sprinter 3000 - Add new Story</title>
 </head>
 <body>
-<form action="/list" method="get">
-<button id="back-to-main-create" type="submit">Back to Story Manager</button>
-</form>
+<a href="{{ url_for('home_list') }}" title="Back to Story Manager">
+<button id="back-to-main-create" type="button">Back to Story Manager</button>
+</a>
 <form action="read-added-data" method="post">
 
     <p>Story Title:</p>
@@ -47,9 +47,9 @@
 
 </head>
 <body>
-<form action="/list" method="get">
-<button id="back-to-main-edit" type="submit">Back to Story Manager</button>
-</form>
+<a href="{{ url_for('home_list') }}" title="Back to Story Manager">
+<button id="back-to-main-edit" type="button">Back to Story Manager</button>
+</a>
 <form action="/edit-story" method="post">
    {% for data in form_data %}
     <p>Story Title:</p>
