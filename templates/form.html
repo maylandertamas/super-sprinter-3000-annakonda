@@ -3,11 +3,14 @@
 {% if not story_id %}
 
 <head>
-    <h1>User Story manager - Add new Story</h1>
+    <h1>User Story Manager - Add new Story</h1>
     <title>Super Sprinter 3000 - Add new Story</title>
 </head>
 <body>
-<form action="read-input" method="post">
+<form action="/list" method="get">
+<button type="submit">Back to list</button>
+</form>
+<form action="read-added-data" method="post">
 
     <p>Story Title:</p>
     <p><input type="text" name="story-title" required></p>
@@ -39,11 +42,14 @@
 {% else %}
 
 <head>
-    <h1>User Story manager - Edit Story</h1>
+    <h1>User Story Manager - Edit Story</h1>
     <title>Super Sprinter 3000 - Edit Story</title>
 
 </head>
 <body>
+<form action="/list" method="get">
+<button type="submit">Back to list</button>
+</form>
 <form action="/edit-story" method="post">
    {% for data in form_data %}
     <p>Story Title:</p>
