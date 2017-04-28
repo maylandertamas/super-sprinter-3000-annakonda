@@ -39,7 +39,8 @@ def read_and_add_form_data():
                      'bussines-value', 'estimation', 'status']
     for name in request_names:
         data_list.append(request.form[name])
-    table.append(data_list)
+    cleared_data_list = common.clear_input(data_list)
+    table.append(cleared_data_list)
     common.write_table_to_file(table)
 
 
@@ -66,10 +67,11 @@ def edit_story():
                      'changed-bussines-value', 'changed-estimation', 'changed-status']
     for names in request_names:
         changed_story.append(request.form[names])
+    cleared_data_list = common.clear_input(changed_story)
     for element in table:
         if element[0] == ID_string:
             table.remove(element)
-            table.insert(0, changed_story)
+            table.insert(0, cleared_data_list)
     common.write_table_to_file(table)
     return redirect(url_for('home_list'))
 
