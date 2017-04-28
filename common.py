@@ -8,8 +8,7 @@ def get_table_from_file(file_name="stories.csv"):
 def write_table_to_file(table, file_name="stories.csv"):
     with open(file_name, "w") as file:
         for record in table:
-            stripped_record = [element.replace('\r\n', ' ') for element in record]
-            row = ';'.join(stripped_record)
+            row = ';'.join(record)
             file.write(row + "\n")
 
 
@@ -19,3 +18,9 @@ def ID_generator(table):
         return str(1)
     else:
         return str(max(IDs_in_table) + 1)
+
+
+def clear_input(input_list):
+    stripped_linebreaks = [element.replace('\r\n', ' ') for element in input_list]
+    stripped_semicolons = [element.replace(';', ',') for element in stripped_linebreaks]
+    return stripped_semicolons
