@@ -23,13 +23,15 @@ def story_editor_render(story_id=None, form_data=[]):
     return render_template("form.html",  story_id=story_id, form_data=datas_to_fill)
 
 
-@app.route('/story')
+@app.route('/story', methods=['GET', 'POST'])
 def story_create(story_id=None):
+    if request.method == 'POST':
+        read_and_add_form_data()
+        return redirect(url_for('home_list'))
     return render_template("form.html", story_id=story_id)
 
 
-@app.route('/read-added-data', methods=['POST'])
-def add_data():
+def read_and_add_form_data():
     table = common.get_table_from_file()
     data_list = []
     data_list.insert(0, common.ID_generator(table))
@@ -39,7 +41,6 @@ def add_data():
         data_list.append(request.form[name])
     table.append(data_list)
     common.write_table_to_file(table)
-    return redirect(url_for('home_list'))
 
 
 @app.route('/delete-story', methods=['POST'])
