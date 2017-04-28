@@ -11,8 +11,8 @@ def home_list(data_list=[]):
     return render_template("list.html", data_list=data_table)
 
 
-@app.route('/story/<story_id>', methods=['GET', 'POST'])
-def story_edit(story_id=None, form_data=[]):
+@app.route('/story/<story_id>', methods=['POST'])
+def story_editor_render(story_id=None, form_data=[]):
     table = common.get_table_from_file()
     ID = request.form['edit_option']
     ID_string = str(ID)
